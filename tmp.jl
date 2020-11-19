@@ -4,7 +4,5 @@ export foo
     function foo(bar)
         println("foobar")
     end
-
-    #add more definitions here
-
+    #add more definitions here 
 end
