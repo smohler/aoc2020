@@ -37,7 +37,7 @@ plt = plot3d(
 )
 
 # build an animated gif by pushing new points to the plot, saving every 10th frame
-@gif for i=1:1500
+gif for i=1:1500
     step!(attractor)
     #now that step has been applied the attractor has been mutated so plot it. 
     #this idea of mutating a specific data structure is almost like a 
