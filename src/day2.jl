@@ -1,4 +1,4 @@
-# tmp file to develop aoc solutions
+# Day 2 Password Philosophy
 module TobogganRental 
 export Password, TobogganPW
 function Password(filename) 
