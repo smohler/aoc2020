@@ -1,17 +1,4 @@
-# tmp file to develop aoc solutions
-module tmp
-    function treehits(filename)
-        trees=0; right=0
-        forest=readlines(filename)
-        for arbor in forest
-            if arbor[(right%length(arbor))+1]=='#'
-                trees+=1
-            end
-            right+=3
-        end
-        return trees
-    end
-
+module ToboSled
     function trajectory(filename,step,down)
         trees=0; right=0
         forest=readlines(filename)
