@@ -4,7 +4,7 @@ include("tmp.jl")
 import .tmp
 using .tmp, Test
 @testset "Passport Processing" begin
-@test tmp.reader("test.txt")==2
+@test tmp.reader("\\testdata\\passport_2valid.txt")==2
 @test tmp.Byr("2002")==true
 @test tmp.Byr("2003")==false
 @test tmp.Hgt("60in")==true
@@ -18,8 +18,8 @@ using .tmp, Test
 @test tmp.Ecl("wat")==false
 @test tmp.Pid("000000001")==true
 @test tmp.Pid("0123456789")==false
-@test tmp.reader("valids.txt")==4
-@test tmp.reader("invalids.txt")==0
+@test tmp.reader("\\testdata\\passport_4valids.txt")==4
+@test tmp.reader("\\testdata\\passport_0valids.txt")==0
 valid1="pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f"
 @test tmp.scanner(valid1)==1
 valid2="eyr:2029 ecl:blu cid:129 byr:1989 iyr:2014 pid:896056539 hcl:#a97842 hgt:165cm"
