@@ -1,17 +1,20 @@
-# tmp file to develop aoc solutions
-module tmp
+#Passport Verification Model
+module Passport
     export reader, scanner
     function reader(batch)
         valids=0
         people=split(read(batch, String),"\n\n")
         for person in people
             passport=replace(person, r"\n"=>' ')
-            println(passport)
+            #EDIT make the passport a dictionary here
             valids+=scanner(passport)
         end
         return valids
     end
     function scanner(passport)
+        #If passport is a dictionary
+        #this would be cleaner, first 4 lines could be cut
+
         validkeys=["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]
         fields=split(passport, r":| ")
         keys=fields[1:2:end]
@@ -28,6 +31,8 @@ module tmp
         end
     end
     function validdata(keys, data)
+        #If passport was a dictionary this could be validdata(passport)
+        
         pass=Dict(zip(keys, data))
         if Byr(pass["byr"])&&Iyr(pass["iyr"])&&Eyr(pass["eyr"])&&Hgt(pass["hgt"])&&Hcl(pass["hcl"])&&Ecl(pass["ecl"])&&Pid(pass["pid"])
             return 1
