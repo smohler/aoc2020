@@ -1,7 +1,5 @@
-# tmp file to develop aoc solutions
-module tmp
+module PlaneSeat
 export findseatID, seatIDS
-
     function seatIDS(manifest)
         seats=readlines(manifest)
         IDS=[]
