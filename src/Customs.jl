@@ -1,5 +1,5 @@
-# tmp file to develop aoc solutions
-module tmp
+# Day 6: Custom Customs
+module Customs
     export customs
     function customs(forms,count)
         if count=="anyone"
