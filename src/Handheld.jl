@@ -1,5 +1,5 @@
 #handheld gameboy for advent of code
-module tmp
+module Handheld
 
 function READ(instruction)
     optcode, val=split(instruction, " ")
