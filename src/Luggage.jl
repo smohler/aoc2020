@@ -1,5 +1,6 @@
 # p file to vdevelop aoc solutions
 module Luggage
+export rules, process, containers, luggage, allLuggage
     function rules(data)
         lines=split.(readlines(data), " bags contain ")
         pat=r"[0-9]{1} [a-z]+ [a-z]+"

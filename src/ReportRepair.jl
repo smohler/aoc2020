@@ -1,6 +1,6 @@
 #Report Repair Advent of Code 2020
 module ReportRepair
-export report
+export report, puzzleinput
     function report(expense, value, entries)
 	#part 1
     expense=puzzleinput()

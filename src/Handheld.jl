@@ -1,5 +1,6 @@
 #handheld gameboy for advent of code
 module Handheld
+export READ, RUN, DEBUG
 function READ(instruction)
     optcode, val=split(instruction, " ")
     val=parse(Int, val)
