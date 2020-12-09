@@ -1,26 +1,53 @@
 #handheld gameboy for advent of code
 module Handheld
-function READ(instruction)
+
+struct Intrx
+    #instruction code for computer
+    opt::String
+    val::Int
+end
+
+mutable struct Cpu
+    acc:: Int           #accumulator value
+    clk:: Int           #clock cycle count
+    mem:: Array{Intrx}  #an ordered list of computer instructions
+    pos:: Int           #position in memory 
+    hlt:: Bool          #flag for program halting
+end
+
+function READ(instruction)::Intrx
     optcode, val=split(instruction, " ")
     val=parse(Int, val)
-    return optcode, val
+    return Intrx(optcode, val)
 end
-function RUN(PROGRAM)
-    acc=0
-    step=1
-    cycle=0
+
+function LOAD(programfile)::Cpu
+    #load the .txt program into memory
     MEM=[]
-    while cycle<1000
-        if step>length(PROGRAM); return acc, true; end
-        opt, val=READ(PROGRAM[step])
+    open(programfile) do file
+        for line in eachline(file)
+            push!(MEM, READ(line))
+        end
+    end
+    return Cpu(0,1,MEM,1,false)
+end
+
+function RUN(programfile)
+    CPU = LOAD(programfile)
+
+    while !CPU.hlt
+        if CPU.pos>length(CPU.mem); CPU.hlt = true; return CPU; end
+
+        instruction = CPU.mem[CPU.pos]
         # msg="step:: $step \t opt:: $opt \t val:: $val \t acc:: $acc"
         # println(msg)
-        if opt=="nop"; step+=1; end
-        if opt=="acc"; step+=1; acc+=val; end
-        if opt=="jmp"; step+=val; end
-        if in(step, MEM); println("INFINITE LOOP"); return acc, false; end
+
+        if instruction.opt == "nop"; CPU.pos += 1; end
+        if instruction.opt == "acc"; CPU.pos += 1; CPU.acc += val; end
+        if instruction.opt == "jmp"; CPU.pos += val; end
+        if in(instruction, MEM); CPU.hlt = true; return CPU; end
         push!(MEM, step)
-        cycle+=1
+        CPU.clk += 1
     end
 end
 function DEBUG(program)
