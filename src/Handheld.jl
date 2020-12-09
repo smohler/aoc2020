@@ -1,6 +1,5 @@
 #handheld gameboy for advent of code
 module Handheld
-
 function READ(instruction)
     optcode, val=split(instruction, " ")
     val=parse(Int, val)
