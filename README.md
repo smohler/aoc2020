@@ -15,3 +15,4 @@ Here is a ranked list of why I want to complete advent of code for myself.
 
 3. **Learn** `VIM`
   I know I could have chosen eMacs, but I decided on VIM with a coin toss.
+

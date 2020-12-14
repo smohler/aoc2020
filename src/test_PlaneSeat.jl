@@ -3,7 +3,6 @@
 include("PlaneSeat.jl")
 import .PlaneSeat
 using .PlaneSeat, Test
-seat=Seat(1,3,129)
 @testset "Binary Boarding" begin
     @test PlaneSeat.findseatID("FBFBBFFRLR")==(44,5,357)
     @test PlaneSeat.findseatID("BFFFBBFRRR")==(70,7,567)
