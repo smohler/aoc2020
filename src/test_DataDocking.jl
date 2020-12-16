@@ -1,6 +1,6 @@
 # Day 14 -- Data Docking -- Unit Test
 module test_DataDocking
-include("DataDocking.jl")
+include("testdata\\DataDocking.jl")
 using .DataDocking, Test
 
 @testset "DataDocking :: masked(val, mask)" begin
@@ -46,6 +46,6 @@ end
 @testset "Part 2" begin
     input = "input-14.txt"
     program = readInput(input)
-    memsum(program, decoder)|>println
+    @test memsum(program, decoder) == 2881082759597
 end
 end #module 

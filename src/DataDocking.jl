@@ -1,10 +1,10 @@
 module DataDocking
-export memsum, masked, decoder
+export memsum, masked, decoder, day14
 using SparseArrays, IterTools
 
     function day14(input)
         program = split.(readlines(input), " = ")
-        return [memsum(program), altmemsum(program)]
+        return [memsum(program, masked), memsum(program, decoder)]
     end
 
     function memsum(Program, Decoder)
